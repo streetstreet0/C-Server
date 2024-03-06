@@ -1,10 +1,19 @@
 ﻿
 
-class MainServer
+namespace CSharpServer
 {
-    static void Main(string[] args)
+    public class MainServer
     {
-        Console.WriteLine("Hello, World!");
+        static void Main(string[] args)
+        {
+            int port = 8081;
+            Console.WriteLine("Starting the server...!");
+            Console.WriteLine("Server running on port " + port);
+            HTTPSserver server = new HTTPSserver(port);
+            server.Start();
+        }
     }
-    
 }
+
+
+
