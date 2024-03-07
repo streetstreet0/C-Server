@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "93471b49-2631-4108-be20-f7d1336b6552": {
+      "ProjectGuid": "93471b49-2631-4108-be20-f7d1336b6552",
+      "DisplayName": "CSharpServer",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -9,20 +9,20 @@ namespace CSharpServer
 {
     public class Request
     {
-        private String Type { get; set; }
-        private String Url { get; set; }
-        private String Host { get; set; }
+        public String RequestType { get; }
+        public String Url { get; }
+        public String Host { get; }
 
         /**
          * Private constructor to create a request object.
          * 
          * @param type The type of request.
-         * @param url The url of the server.
+         * @param url The requested url.
          * @param host The host of the server.
          */
         private Request(String type, String url, String host)
         {
-            this.Type = type;
+            this.RequestType = type;
             this.Url = url;
             this.Host = host;
             TestRequest();
@@ -34,7 +34,7 @@ namespace CSharpServer
          */
         private void TestRequest()
         {
-            Debug.WriteLine("Type = " + Type);
+            Debug.WriteLine("Type = " + RequestType);
             Debug.WriteLine("url = " + Url);
             Debug.WriteLine("host = " + Host);
         }
@@ -52,10 +52,11 @@ namespace CSharpServer
                 return null;
             }
 
-            String[] tokens = request.Split(' ');
+            String[] tokens = request.Split(' ', '\n');
             String type = tokens[0];
             String url = tokens[1];
             String host = tokens[4];
+            
             return new Request(type, url, host);
         }
     }

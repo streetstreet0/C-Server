@@ -39,7 +39,42 @@ namespace CSharpServer
                 return CreateNullRequest();
             }
 
+            if (request.RequestType == "GET")
+            {
+                String fileName = Environment.CurrentDirectory + HTTPSserver.MESSAGEDIRECTORY + request.Url;
+                FileInfo file = new FileInfo(fileName);
+                if (file.Exists && file.Extension.Contains("."))
+                {
+                    return CreateResponseFrom(file);
+                }
+                else
+                {
+                    return CreateNotFoundRequest();
+                }
+            }
+            else
+            {
+                return CreateWrongRequest();
+            }
+
             return null;
+        }
+
+        /**
+         * Create a Response from a file
+         * 
+         */
+        public static Response CreateResponseFrom(FileInfo file)
+        {
+            FileStream fileStream = file.OpenRead();
+
+            BinaryReader reader = new BinaryReader(fileStream);
+            Byte[] outputBytes = new Byte[fileStream.Length];
+            reader.Read(outputBytes, 0, outputBytes.Length);
+
+            fileStream.Close();
+
+            return new Response("200 OK", "text/html", outputBytes);
         }
 
         /**
@@ -48,7 +83,55 @@ namespace CSharpServer
          */
         public static Response CreateNullRequest()
         {
-            return new Response("400 Bad Request", "text/html", new byte[0]);
+            String fileName = Environment.CurrentDirectory + HTTPSserver.MESSAGEDIRECTORY + "400.html";
+            FileInfo file = new FileInfo(fileName);
+            FileStream fileStream = file.OpenRead();
+
+            BinaryReader reader = new BinaryReader(fileStream);
+            Byte[] outputBytes = new Byte[fileStream.Length];
+            reader.Read(outputBytes, 0, outputBytes.Length);
+
+            fileStream.Close();
+
+            return new Response("400 Bad Request", "text/html", outputBytes);
+        }
+
+        /**
+         * Create a Response for a request to a page that doesn't exist
+         * 
+         */
+        public static Response CreateNotFoundRequest()
+        {
+            String fileName = Environment.CurrentDirectory + HTTPSserver.MESSAGEDIRECTORY + "404.html";
+            FileInfo file = new FileInfo(fileName);
+            FileStream fileStream = file.OpenRead();
+
+            BinaryReader reader = new BinaryReader(fileStream);
+            Byte[] outputBytes = new Byte[fileStream.Length];
+            reader.Read(outputBytes, 0, outputBytes.Length);
+
+            fileStream.Close();
+
+            return new Response("404 Page Not Found", "text/html", outputBytes);
+        }
+
+        /**
+         * Create a Response for a request for a method that isn't allowed
+         * 
+         */
+        public static Response CreateWrongRequest()
+        {
+            String fileName = Environment.CurrentDirectory + HTTPSserver.MESSAGEDIRECTORY + "405.html";
+            FileInfo file = new FileInfo(fileName);
+            FileStream fileStream = file.OpenRead();
+
+            BinaryReader reader = new BinaryReader(fileStream);
+            Byte[] outputBytes = new Byte[fileStream.Length];
+            reader.Read(outputBytes, 0, outputBytes.Length);
+
+            fileStream.Close();
+
+            return new Response("405 Method Not Allowed", "text/html", outputBytes);
         }
 
         /**
