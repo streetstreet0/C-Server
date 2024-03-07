@@ -5,11 +5,15 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace CSharpServer
 {
     public class HTTPSserver
     {
+        public const String VERSION = "HTTP/1.1";
+        public const String NAME = "TESTING123-Server";
+        public const String MESSAGEDIRECTORY = "/html/";
         private int portNum;
         private bool running;
         private TcpListener listener;
@@ -58,9 +62,13 @@ namespace CSharpServer
             running = false;
         }
 
+        /**
+         * Handle requests from the client, and send out the correct response.
+         * 
+         * @param client The client we are listening to.
+         */
         private void HandleClient(TcpClient client)
         {
-            Console.WriteLine("HandleClient hasn't been implemented, lol");
             StreamReader reader = new StreamReader(client.GetStream());
 
             String message = "";
@@ -69,7 +77,12 @@ namespace CSharpServer
                 message += reader.ReadLine() + "\n";
             }
 
-            Console.WriteLine("Request: \n " + message);
+            Debug.WriteLine("Request: \n " + message);
+
+            Request request = Request.GetRequest(message);
+            Response response = Response.RespondTo(request);
+
+            response.Post(client.GetStream());
         }
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\CSharpServer.exe
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\CSharpServer.deps.json
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\CSharpServer.runtimeconfig.json
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\CSharpServer.dll
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\ref\CSharpServer.dll
+C:\Users\stree\source\repos\CSharpServer\bin\Debug\net6.0\CSharpServer.pdb
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.csproj.AssemblyReference.cache
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.AssemblyInfoInputs.cache
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.AssemblyInfo.cs
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.csproj.CoreCompileInputs.cache
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.dll
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\ref\CSharpServer.dll
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.pdb
+C:\Users\stree\source\repos\CSharpServer\obj\Debug\net6.0\CSharpServer.genruntimeconfig.cache
